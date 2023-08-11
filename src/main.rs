@@ -8,7 +8,7 @@ const ALLOWED_CHARS: [char; 62] = [
 
 fn generate_string(mut num: i32) -> String {
     let mut result = String::with_capacity(4);
-
+    let b = 1;
     while num >= 0 {
         let index = (num % ALLOWED_CHARS.len() as i32) as usize;
         result.push(ALLOWED_CHARS[index]);
