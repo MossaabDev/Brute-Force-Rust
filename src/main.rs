@@ -1,4 +1,4 @@
-const ALLOWED_CHARS: [char; 62] = [
+const allowed_chars: [char; 62] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
@@ -8,19 +8,19 @@ const ALLOWED_CHARS: [char; 62] = [
 
 fn generate_string(mut num: i32) -> String {
     let mut result = String::with_capacity(4);
-    let b = 1;
     while num >= 0 {
-        let index = (num % ALLOWED_CHARS.len() as i32) as usize;
-        result.push(ALLOWED_CHARS[index]);
-        num = (num / ALLOWED_CHARS.len() as i32) - 1;
+        let c = allowed_chars[(num%allowed_chars.len()as i32)as usize];
+        result.push(c);
+        num = (num / allowed_chars.len() as i32) -1;
     }
 
     result
 }
 
 fn brute_force(s: &str) -> bool {
-    for i in 0..1_000_000 {
+    for i in 0..1_000_00000 {
         if generate_string(i) == s {
+            println!("found : {}", generate_string(i));
             return true;
         }
     }
@@ -28,8 +28,8 @@ fn brute_force(s: &str) -> bool {
 }
 
 fn main() {
-    const MAX_LENGTH: usize = 4;
-    let password = "9999";
+    const MAX_LENGTH: usize = 5;
+    let password = "aaaaa";
 
     if password.len() > MAX_LENGTH {
         println!("Password should be less than {} symbols", MAX_LENGTH);
