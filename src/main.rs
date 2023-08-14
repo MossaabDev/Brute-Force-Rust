@@ -7,10 +7,10 @@ const allowed_chars: [char; 62] = [
 ];
 
 fn generate_string(mut num: i32) -> String {
-    let mut result = String::with_capacity(4);
+    let mut result = String::new();
+    let mut num = num;
     while num >= 0 {
-        let c = allowed_chars[(num%allowed_chars.len()as i32)as usize];
-        result.push(c);
+        result.push(allowed_chars[(num%allowed_chars.len()as i32)as usize]);
         num = (num / allowed_chars.len() as i32) -1;
     }
 
@@ -18,7 +18,7 @@ fn generate_string(mut num: i32) -> String {
 }
 
 fn brute_force(s: &str) -> bool {
-    for i in 0..1_000_00000 {
+    for i in 0..1_000_000_00 {
         if generate_string(i) == s {
             println!("found : {}", generate_string(i));
             return true;
